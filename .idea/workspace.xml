@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3fe1c5e7-9e3f-4534-8fd7-7610803c61b0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.bsp/sbt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/eslint.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/public/vite.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Alerts.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/App.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/History.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Home.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance2.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance3.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance4.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Portfolio.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/PortfolioPerformance.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Register.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/Simulation.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/assets/react.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/src/main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/frontend/vite.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/build.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/Main.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/actors/PortfolioActor.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/models/Portfolio.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/models/User.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/routes/AuthRoutes.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/routes/MarketRoutes.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/routes/PortfolioRoutes.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/routes/PortfolioWebSocketRoutes.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/services/AlphaVantageService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/services/DatabaseService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/services/MarketService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/services/PortfolioService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/services/PortfolioStreamService.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/utils/JsonFormats.scala" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="test_akka" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2uGbDKLop54l0Ws8iUiadFTr2rg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/cytech/projet_finance (vantage)",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/frontend/src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3fe1c5e7-9e3f-4534-8fd7-7610803c61b0" name="Changes" comment="" />
+      <created>1741877739136</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741877739136</updated>
+      <workItem from="1741877740401" duration="9925000" />
+      <workItem from="1741911314764" duration="30622000" />
+      <workItem from="1742032138642" duration="30869000" />
+      <workItem from="1742176998670" duration="849000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
