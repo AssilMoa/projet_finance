@@ -5,22 +5,25 @@ export default function Home({ user }) {
     const navigate = useNavigate();
     const [userName, setUserName] = useState("");
 
+    // Cette fonction est appelée dès que le composant est monté
+    // Elle vérifie si un utilisateur est connecté ou récupère l'utilisateur depuis le localStorage
     useEffect(() => {
         if (!user) {
             const storedUser = JSON.parse(localStorage.getItem("user"));
             if (storedUser) {
                 setUserName(`${storedUser.firstName} ${storedUser.lastName}`);
             } else {
-                navigate("/");
+                navigate("/"); // Redirige vers la page de connexion si aucun utilisateur n'est connecté
             }
         } else {
             setUserName(`${user.firstName} ${user.lastName}`);
         }
     }, [user, navigate]);
 
+    // Fonction de déconnexion
     const handleLogout = () => {
-        localStorage.clear();
-        navigate("/");
+        localStorage.clear(); // Efface les données utilisateur du localStorage
+        navigate("/"); // Redirige vers la page de connexion après la déconnexion
     };
 
     return (
@@ -29,6 +32,7 @@ export default function Home({ user }) {
                 <h1 style={styles.title}>Bienvenue, {userName}</h1>
 
                 <div style={styles.buttonContainer}>
+                    {/* Redirections vers différentes pages de la plateforme */}
                     <button style={styles.button} onClick={() => navigate("/portfolio")}>
                         Acheter un actif
                     </button>
@@ -58,7 +62,7 @@ export default function Home({ user }) {
     );
 }
 
-// 🔹 Styles en objet
+// Styles en objet pour la page d'accueil
 const styles = {
     pageContainer: {
         display: "flex",
@@ -100,7 +104,5 @@ const styles = {
         textAlign: "center",
     },
 };
-
-
 
 

@@ -12,6 +12,7 @@ export default function Performance3() {
     useEffect(() => {
         async function fetchMarketData() {
             try {
+                // Récupération des données du marché (les 5 principales cryptos)
                 const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`);
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des données du marché.");
@@ -24,12 +25,14 @@ export default function Performance3() {
                 const variance = priceChanges.map(v => Math.pow(v - meanReturn, 2)).reduce((sum, value) => sum + value, 0) / priceChanges.length;
                 const stdDev = Math.sqrt(variance);
 
+                // Calcul du Sharpe Ratio pour chaque crypto
                 const sharpeRatios = data.map(crypto => ({
                     name: crypto.name,
                     symbol: crypto.symbol.toUpperCase(),
                     sharpeRatio: ((crypto.price_change_percentage_24h - riskFreeRate) / stdDev).toFixed(2)
                 }));
 
+                // Mise à jour des données du Sharpe Ratio
                 setSharpeData(sharpeRatios);
             } catch (error) {
                 console.error("Erreur lors du chargement du marché :", error);
@@ -45,6 +48,7 @@ export default function Performance3() {
     if (loading) return <h2>Chargement du Sharpe Ratio...</h2>;
     if (error) return <h2>{error}</h2>;
 
+    // Données pour afficher le graphique du Sharpe Ratio
     const sharpeBarData = {
         labels: sharpeData.map(crypto => crypto.name),
         datasets: [{
@@ -58,11 +62,13 @@ export default function Performance3() {
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
             <h1>Sharpe Ratio des Cryptos</h1>
 
+            {/* Affichage du graphique avec le Sharpe Ratio */}
             <div style={{ marginTop: "30px" }}>
                 <h2>Sharpe Ratio</h2>
                 <Bar data={sharpeBarData} />
             </div>
 
+            {/* Détails du Sharpe Ratio */}
             <h2 style={{ marginTop: "30px" }}>Détail du Sharpe Ratio</h2>
             <table border="1" style={{ width: "100%", textAlign: "center", borderCollapse: "collapse", marginTop: "20px" }}>
                 <thead style={{ backgroundColor: "#f0f0f0" }}>
@@ -83,6 +89,7 @@ export default function Performance3() {
                 </tbody>
             </table>
 
+            {/* Explication de la formule du Sharpe Ratio */}
             <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "#f8f9fa", borderRadius: "8px" }}>
                 <h3>Formule utilisée pour calculer le Sharpe Ratio :</h3>
                 <p style={{ fontSize: "16px" }}>
@@ -103,6 +110,7 @@ export default function Performance3() {
                 </p>
             </div>
 
+            {/* Boutons de navigation */}
             <div style={{ textAlign: "center", marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
                 <button
                     onClick={() => navigate("/performance2")}

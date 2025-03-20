@@ -4,44 +4,48 @@ export default function Alerts() {
     const [alerts, setAlerts] = useState([]);
     const [prices, setPrices] = useState({});
     const [lastUpdate, setLastUpdate] = useState("");
-    const alertThreshold = 0.1; // 🔥 **Seuil bas pour voir les alertes**
-    const allowedCryptos = ["btcusdt", "ethusdt", "dogeusdt"]; // 🔹 **Cryptos suivies**
+    const alertThreshold = 0.1; // Seuil bas pour voir les alertes
+    const allowedCryptos = ["btcusdt", "ethusdt", "dogeusdt"]; // Cryptos suivies
 
     useEffect(() => {
-        // ✅ **WebSocket Binance**
+        // WebSocket pour recevoir les mises à jour en temps réel des cryptomonnaies
         const ws = new WebSocket(
             `wss://stream.binance.com:9443/ws/btcusdt@ticker/ethusdt@ticker/dogeusdt@ticker`
         );
 
+        // Gestion de l'arrivée des données
         ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
 
             if (allowedCryptos.includes(data.s.toLowerCase())) {
+                // Crée une nouvelle alerte en fonction de la variation de la crypto
                 const newAlert = {
                     symbol: data.s, // Ex: BTCUSDT
                     change: parseFloat(data.P), // Variation en %
-                    type: parseFloat(data.P) > 0 ? "Hausse" : "Baisse",
+                    type: parseFloat(data.P) > 0 ? "Hausse" : "Baisse", // Type de l'alerte
                 };
 
+                // Mise à jour des alertes avec la nouvelle donnée
                 setAlerts((prevAlerts) => {
-                    // ✅ Remplace l’ancienne alerte pour la même crypto
                     const updatedAlerts = prevAlerts.filter(alert => alert.symbol !== newAlert.symbol);
                     return [...updatedAlerts, newAlert];
                 });
 
+                // Mise à jour des derniers prix
                 setPrices((prevPrices) => ({
                     ...prevPrices,
-                    [data.s]: parseFloat(data.c), // Dernier prix
+                    [data.s]: parseFloat(data.c), // Dernier prix de la crypto
                 }));
 
-                // ✅ Met à jour l'heure
+                // Met à jour l'heure de la dernière mise à jour
                 setLastUpdate(new Date().toLocaleTimeString());
             }
         };
 
+        // Gestion des erreurs de WebSocket
         ws.onerror = (error) => console.error("WebSocket Erreur :", error);
 
-        // ✅ **Ferme proprement WebSocket lors du démontage**
+        // Ferme le WebSocket proprement lors du démontage du composant
         return () => {
             ws.close();
         };
@@ -52,7 +56,7 @@ export default function Alerts() {
             <div style={styles.content}>
                 <h2 style={styles.title}>Alertes & Notifications</h2>
 
-                {/* 🔹 Affichage de la dernière mise à jour */}
+                {/* Affichage de la dernière mise à jour */}
                 <p style={styles.lastUpdate}>Dernière mise à jour : {lastUpdate}</p>
 
                 {alerts.length === 0 ? (
@@ -84,7 +88,7 @@ export default function Alerts() {
     );
 }
 
-// ✅ **Styles mis à jour**
+// Styles pour la mise en page de l'interface
 const styles = {
     pageContainer: {
         display: "flex",
@@ -92,11 +96,11 @@ const styles = {
         alignItems: "center",
         height: "100vh",
         width: "100vw",
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "#f8f9fa", // Fond gris clair
     },
     content: {
         textAlign: "center",
-        background: "white",
+        background: "white", // Fond blanc pour l'interface
         padding: "50px",
         borderRadius: "10px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -124,11 +128,9 @@ const styles = {
         fontSize: "18px",
     },
     rowEven: {
-        backgroundColor: "#f8f9fa",
+        backgroundColor: "#f8f9fa", // Ligne paire avec fond gris clair
     },
     rowOdd: {
-        backgroundColor: "white",
+        backgroundColor: "white", // Ligne impaire avec fond blanc
     },
 };
-
-

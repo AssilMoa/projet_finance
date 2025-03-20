@@ -51,23 +51,6 @@ class PortfolioService(
     }
   }
 
-  /** ✅ Calcul RSI */
-  def calculateRSI(symbol: String): Future[Double] = {
-    marketService.getCryptoHistoricalPrices(symbol, 14).map { prices =>
-      if (prices.length < 2) return Future.successful(50.0)
-
-      val gains = prices.sliding(2).collect { case List(a, b) if b > a => b - a }.toList
-      val losses = prices.sliding(2).collect { case List(a, b) if b < a => a - b }.toList
-
-      val avgGain = if (gains.nonEmpty) gains.sum / gains.length else 0.0
-      val avgLoss = if (losses.nonEmpty) losses.sum / losses.length else 0.0
-
-      val rs = if (avgLoss == 0) Double.MaxValue else avgGain / avgLoss
-      100 - (100 / (1 + rs))
-    }
-  }
-
-
 
   /** ✅ Calcul MACD */
   def calculateMACD(symbol: String): Future[Double] = {

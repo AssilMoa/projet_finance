@@ -100,7 +100,7 @@ export default function Portfolio({ user }) {
     );
 }
 
-// ✅ **Styles CSS-in-JS pour le centrage et meilleure présentation**
+
 const styles = {
     pageContainer: {
         display: "flex",

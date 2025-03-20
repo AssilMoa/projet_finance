@@ -15,37 +15,38 @@ import scala.concurrent.ExecutionContextExecutor
 import scala.collection.immutable.Seq
 
 object Main extends App {
+  // Initialisation du système d'acteurs et du matériel de flux
   implicit val system: ActorSystem = ActorSystem("ProjectApp")
   implicit val mat: Materializer = Materializer(system)
   implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
-  // 🔥 Initialisation des services
+  // Initialisation des services
   val dbService = new DatabaseService()
   val marketService = new MarketService()
   val portfolioStreamService = new PortfolioStreamService(marketService)
 
-  // 🔥 Initialisation des routes
+  // Initialisation des routes
   val authRoutes = new AuthRoutes(dbService)
   val portfolioRoutes = new PortfolioRoutes(dbService, marketService)
   val portfolioWebSocketRoutes = new PortfolioWebSocketRoutes(dbService, portfolioStreamService)
 
-  // ✅ Configuration CORS (Version Universelle)
+  // Configuration CORS (Cross-Origin Resource Sharing)
   val corsSettings = CorsSettings.defaultSettings
-    .withAllowGenericHttpRequests(true) // ✅ Autorise toutes les requêtes HTTP
-    .withAllowedMethods(Seq(GET, POST, PUT, DELETE, OPTIONS)) // ✅ Autorise ces méthodes
-    .withAllowCredentials(true) // ✅ Autorise les credentials (cookies, tokens)
+    .withAllowGenericHttpRequests(true) // Autorise toutes les requêtes HTTP
+    .withAllowedMethods(Seq(GET, POST, PUT, DELETE, OPTIONS)) // Autorise ces méthodes
+    .withAllowCredentials(true) // Autorise les credentials (cookies, tokens)
 
+  // Appliquer les règles CORS aux routes
   val corsRoutes = cors(corsSettings) {
     authRoutes.routes ~
       portfolioRoutes.routes ~
       portfolioWebSocketRoutes.routes
   }
 
-  // ✅ Lancement du serveur HTTP
+  // Lancer le serveur HTTP sur localhost:8080
   val bindingFuture = Http().newServerAt("localhost", 8080).bind(corsRoutes)
-  println("✅ Serveur démarré sur http://localhost:8080/ 🚀")
+  println("Serveur démarré sur http://localhost:8080/")
 }
-
 
 
 

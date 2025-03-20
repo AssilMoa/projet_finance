@@ -11,6 +11,7 @@ export default function Simulation() {
     const [predictedRegression, setPredictedRegression] = useState(null);
     const [dates, setDates] = useState([]);
 
+    // Charge les données historiques de la crypto choisie
     useEffect(() => {
         async function fetchHistoricalData() {
             try {
@@ -26,11 +27,11 @@ export default function Simulation() {
                 setHistoricalPrices(closingPrices);
                 setDates(dateLabels);
 
-                // 🔹 Moyenne Mobile Simple (SMA sur 7 jours)
+                // Calcul de la moyenne mobile simple (SMA)
                 const sma = closingPrices.slice(-7).reduce((a, b) => a + b, 0) / 7;
                 setPredictedSMA(sma.toFixed(2));
 
-                // 🔹 Régression Linéaire
+                // Calcul de la régression linéaire
                 const n = closingPrices.length;
                 const sumX = [...Array(n).keys()].reduce((a, b) => a + b, 0);
                 const sumY = closingPrices.reduce((a, b) => a + b, 0);
@@ -51,6 +52,7 @@ export default function Simulation() {
         fetchHistoricalData();
     }, [selectedCrypto]);
 
+    // Simule les gains basés sur l'investissement initial et les prix historiques
     function simulateInvestment() {
         if (historicalPrices.length > 0) {
             const firstPrice = historicalPrices[0];
@@ -60,7 +62,7 @@ export default function Simulation() {
         }
     }
 
-    // 🔹 Données pour le graphique
+    // Données pour afficher le graphique
     const chartData = {
         labels: dates,
         datasets: [
@@ -95,7 +97,7 @@ export default function Simulation() {
             <div style={styles.content}>
                 <h1 style={styles.title}>Simulation d'Investissement</h1>
 
-                {/* 🔹 Sélecteur de crypto */}
+                {/* Sélecteur de crypto */}
                 <label style={styles.label}>Choisissez une crypto :</label>
                 <select
                     value={selectedCrypto}
@@ -108,7 +110,7 @@ export default function Simulation() {
                     <option value="SOLUSDT">Solana (SOL)</option>
                 </select>
 
-                {/* 🔹 Saisie du montant */}
+                {/* Saisie du montant à investir */}
                 <label style={styles.label}>Montant investi ($) :</label>
                 <input
                     type="number"
@@ -117,22 +119,22 @@ export default function Simulation() {
                     style={styles.input}
                 />
 
-                {/* 🔹 Bouton Simulation */}
+                {/* Bouton pour lancer la simulation */}
                 <button style={styles.button} onClick={simulateInvestment}>
                     Simuler
                 </button>
 
-                {/* 🔹 Résultats */}
+                {/* Résultats de la simulation */}
                 {profit !== 0 && <h2>Gains/Pertes simulés : {profit} $</h2>}
                 <h2>Prévision moyenne mobile simple 7j : {predictedSMA} $</h2>
                 <h2>Prévision Régression Linéaire : {predictedRegression} $</h2>
 
-                {/* 🔹 Graphique */}
+                {/* Affichage du graphique */}
                 <div style={styles.chartContainer}>
                     <Line data={chartData} />
                 </div>
 
-                {/* 🔹 Explication des Formules */}
+                {/* Explication des formules utilisées */}
                 <div style={styles.formulaBox}>
                     <h3>Formules utilisées :</h3>
                     <p><strong>Moyenne Mobile Simple :</strong></p>
@@ -152,7 +154,7 @@ export default function Simulation() {
     );
 }
 
-// 🔹 Styles en objet (avec une largeur plus grande et correction du scroll)
+// Styles en objet pour l'interface
 const styles = {
     pageContainer: {
         display: "flex",
@@ -161,7 +163,7 @@ const styles = {
         height: "100vh",
         width: "100vw",
         backgroundColor: "#f8f9fa",
-        overflowY: "auto",  // ✅ Permet un bon scroll
+        overflowY: "auto",  // Permet un bon scroll
         minHeight: "100vh",
     },
     content: {
@@ -170,7 +172,7 @@ const styles = {
         padding: "40px",
         borderRadius: "10px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-        width: "900px", // ✅ Largeur augmentée
+        width: "900px", // Largeur augmentée
     },
     title: {
         fontSize: "32px",
@@ -209,7 +211,7 @@ const styles = {
     chartContainer: {
         marginTop: "20px",
         width: "100%",
-        height: "400px", // ✅ Taille augmentée pour le graph
+        height: "400px", // Taille augmentée pour le graph
     },
     formulaBox: {
         marginTop: "30px",
@@ -224,5 +226,6 @@ const styles = {
         borderRadius: "5px",
     },
 };
+
 
 

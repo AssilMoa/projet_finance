@@ -60,70 +60,70 @@ class DatabaseService(implicit ec: ExecutionContext) {
   val portfolios = TableQuery[PortfoliosTable]
   val portfolioHistory = TableQuery[PortfolioHistoryTable]
 
-  // 🔥 Création des tables si elles n'existent pas
+  // Création des tables si elles n'existent pas déjà
   def createTables(): Future[Unit] = {
-    println("📌 Vérification et création des tables si nécessaire...")
+    println("Vérification et création des tables si nécessaire...")
     db.run((users.schema ++ portfolios.schema ++ portfolioHistory.schema).createIfNotExists)
   }
 
-  // ✅ Ajouter un utilisateur
+  // Ajouter un utilisateur
   def addUser(firstName: String, lastName: String, email: String, password: String): Future[Int] = {
-    println(s"📌 Ajout de l'utilisateur: $email")
+    println(s"Ajout de l'utilisateur: $email")
     db.run(users += User(0, firstName, lastName, email, password))
   }
 
-  // ✅ Vérifier les identifiants pour le login
+  // Vérifier les identifiants pour le login
   def getUser(email: String, password: String): Future[Option[User]] = {
-    println(s"🔍 Recherche de l'utilisateur: $email")
+    println(s"Recherche de l'utilisateur: $email")
     db.run(users.filter(u => u.email === email && u.password === password).result.headOption)
   }
 
-  // ✅ Récupérer un utilisateur via son ID
+  // Récupérer un utilisateur via son ID
   def getUserById(userId: Int): Future[Option[User]] = {
-    println(s"🔍 Récupération de l'utilisateur avec ID: $userId")
+    println(s"Récupération de l'utilisateur avec ID: $userId")
     db.run(users.filter(_.id === userId).result.headOption)
   }
 
-  // ✅ Ajouter un actif au portefeuille
+  // Ajouter un actif au portefeuille
   def addAsset(userId: Int, symbol: String, quantity: Double, price: Double): Future[Int] = {
     val transactionTime = LocalDateTime.now()
-    println(s"📌 Ajout d'un actif: userId=$userId, symbol=$symbol, quantity=$quantity, price=$price, date=$transactionTime")
+    println(s"Ajout d'un actif: userId=$userId, symbol=$symbol, quantity=$quantity, price=$price, date=$transactionTime")
 
     db.run(portfolios += Portfolio(0, userId, symbol, quantity, price, transactionTime))
       .recover { case ex =>
-        println(s"❌ Erreur lors de l'ajout d'un actif: ${ex.getMessage}")
+        println(s"Erreur lors de l'ajout d'un actif: ${ex.getMessage}")
         0
       }
   }
 
-  // ✅ Récupérer le portefeuille d'un utilisateur
+  // Récupérer le portefeuille d'un utilisateur
   def getPortfolio(userId: Int): Future[Seq[Portfolio]] = {
-    println(s"📌 Récupération du portefeuille pour userId=$userId")
+    println(s"Récupération du portefeuille pour userId=$userId")
     db.run(portfolios.filter(_.userId === userId).result)
   }
 
-  // ✅ Supprimer un actif du portefeuille
+  // Supprimer un actif du portefeuille
   def removeAsset(userId: Int, symbol: String): Future[Int] = {
-    println(s"🗑️ Suppression de l'actif: userId=$userId, symbol=$symbol")
+    println(s"Suppression de l'actif: userId=$userId, symbol=$symbol")
     db.run(portfolios.filter(a => a.userId === userId && a.assetSymbol === symbol).delete)
       .recover { case ex =>
-        println(s"❌ Erreur lors de la suppression de l'actif: ${ex.getMessage}")
+        println(s"Erreur lors de la suppression de l'actif: ${ex.getMessage}")
         0
       }
   }
 
-  // ✅ Sauvegarde de l'historique du portefeuille
+  // Sauvegarder l'historique du portefeuille
   def savePortfolioHistory(userId: Int, value: Double): Future[Int] = {
     val today = LocalDate.now()
-    println(s"📊 Sauvegarde de la valeur du portefeuille pour userId=$userId | Date: $today | Valeur: $value")
+    println(s"Sauvegarde de la valeur du portefeuille pour userId=$userId | Date: $today | Valeur: $value")
 
     val insertQuery = portfolioHistory += PortfolioHistory(userId, today, value)
     db.run(insertQuery)
   }
 
-  // ✅ Récupération des rendements quotidiens pour l'analyse de volatilité
+  // Récupération des rendements quotidiens pour l'analyse de volatilité
   def getDailyReturns(userId: Int): Future[Seq[Double]] = {
-    println(s"📊 Récupération des rendements quotidiens pour userId=$userId")
+    println(s"Récupération des rendements quotidiens pour userId=$userId")
 
     val query = portfolioHistory
       .filter(_.userId === userId)

@@ -21,6 +21,7 @@ export default function Performance({ user }) {
             return;
         }
 
+        // Fonction pour récupérer les données du portefeuille de l'utilisateur
         async function fetchPortfolio() {
             try {
                 const response = await fetch(`http://localhost:8080/portfolio/get?userId=${user.id}`);
@@ -34,12 +35,14 @@ export default function Performance({ user }) {
                 let now = 0;
                 let historical = [];
 
+                // Calcul des montants investis et actuels
                 data.forEach(asset => {
                     bought += asset.quantity * asset.priceBought;
                     now += asset.quantity * asset.priceNow;
                     historical.push({ date: new Date().toISOString().split("T")[0], value: now });
                 });
 
+                // Mise à jour des statistiques
                 setTotalBought(bought);
                 setTotalNow(now);
                 setPerformanceGlobal(((now - bought) / bought) * 100);
@@ -52,6 +55,7 @@ export default function Performance({ user }) {
             }
         }
 
+        // Fonction pour récupérer les données du marché
         async function fetchMarketData() {
             try {
                 const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`);
@@ -65,6 +69,7 @@ export default function Performance({ user }) {
             }
         }
 
+        // Appels des fonctions pour récupérer les données
         fetchPortfolio();
         fetchMarketData();
     }, [user]);
@@ -73,7 +78,7 @@ export default function Performance({ user }) {
     if (error) return <h2 style={styles.centeredText}>{error}</h2>;
     if (!portfolio.length) return <h2 style={styles.centeredText}>Aucun actif trouvé dans le portefeuille.</h2>;
 
-    // 🎨 Données pour les graphiques
+    // Données pour les graphiques
     const pieData = {
         labels: portfolio.map(asset => asset.symbol.toUpperCase()),
         datasets: [{
@@ -116,7 +121,7 @@ export default function Performance({ user }) {
             <div style={styles.content}>
                 <h1 style={styles.title}>Performances du Portefeuille</h1>
 
-                {/* 🔥 Performance globale */}
+                {/* Affichage des performances globales */}
                 <div style={styles.globalStats}>
                     <h2>Achat : {totalBought.toFixed(2)} $</h2>
                     <h2>Valeur actuelle : {totalNow.toFixed(2)} $</h2>
@@ -125,7 +130,7 @@ export default function Performance({ user }) {
                     </h2>
                 </div>
 
-                {/* 🔥 Graphiques */}
+                {/* Affichage des graphiques */}
                 <div style={styles.chartsContainer}>
                     <div style={styles.chartBlock}>
                         <h2>Répartition des actifs</h2>
@@ -137,7 +142,7 @@ export default function Performance({ user }) {
                     </div>
                 </div>
 
-                {/* 🔥 Tableau des performances par actif */}
+                {/* Tableau des performances par actif */}
                 <table style={styles.table}>
                     <thead>
                     <tr>
@@ -163,13 +168,13 @@ export default function Performance({ user }) {
                     </tbody>
                 </table>
 
-                {/* 🔥 Mouvements récents du marché */}
+                {/* Affichage des mouvements récents du marché */}
                 <div style={styles.marketBlock}>
                     <h2>Mouvements récents du marché (24h)</h2>
                     <Bar data={marketBarData} />
                 </div>
 
-                {/* 🔥 Bouton pour voir la volatilité */}
+                {/* Bouton pour voir la volatilité */}
                 <button style={styles.nextButton} onClick={() => navigate("/performance2")}>
                     Suivant (Voir Volatilité)
                 </button>
@@ -178,7 +183,7 @@ export default function Performance({ user }) {
     );
 }
 
-// 🎨 **Styles - Full Page Centré**
+// Styles en objet pour l'interface
 const styles = {
     pageContainer: {
         display: "flex",
@@ -231,6 +236,7 @@ const styles = {
         cursor: "pointer",
     },
 };
+
 
 
 

@@ -5,23 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe1c5e7-9e3f-4534-8fd7-7610803c61b0" name="Changes" comment="Test">
-      <change afterPath="$PROJECT_DIR$/.bloop/bloop.settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.bloop/root-test.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.bloop/root.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metals/metals.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.metals/metals.mv.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/.bloop/bloop.settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/.bloop/projet_finance-build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/metals.sbt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/project/metals.sbt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Alerts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Alerts.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/History.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/History.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Performance.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Performance2.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance2.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Performance3.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance3.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Performance4.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Performance4.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Portfolio.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/frontend/src/Simulation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend/src/Simulation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/actors/PortfolioActor.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/actors/PortfolioActor.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/routes/PortfolioRoutes.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/routes/PortfolioRoutes.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/services/DatabaseService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/services/DatabaseService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/services/MarketService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/services/MarketService.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/services/PortfolioService.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/services/PortfolioService.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,6 +115,7 @@
       <workItem from="1742178331593" duration="3412000" />
       <workItem from="1742449634066" duration="2208000" />
       <workItem from="1742477670434" duration="3196000" />
+      <workItem from="1742496382174" duration="3021000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1742177951117</created>

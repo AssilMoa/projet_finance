@@ -12,6 +12,7 @@ export default function Performance2() {
     useEffect(() => {
         async function fetchMarketData() {
             try {
+                // Récupération des données du marché (les 5 principales cryptos)
                 const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`);
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des données du marché.");
@@ -23,12 +24,14 @@ export default function Performance2() {
                 const variance = priceChanges.map(v => Math.pow(v - mean, 2)).reduce((sum, value) => sum + value, 0) / priceChanges.length;
                 const stdDev = Math.sqrt(variance);
 
+                // Calcul de la volatilité pour chaque crypto
                 const volatility = data.map(crypto => ({
                     name: crypto.name,
                     symbol: crypto.symbol.toUpperCase(),
                     volatility: Math.abs(crypto.price_change_percentage_24h - mean).toFixed(2)
                 }));
 
+                // Mise à jour des données de volatilité
                 setVolatilityData(volatility);
             } catch (error) {
                 console.error("Erreur lors du chargement du marché :", error);
@@ -44,6 +47,7 @@ export default function Performance2() {
     if (loading) return <h2>Chargement de la volatilité...</h2>;
     if (error) return <h2>{error}</h2>;
 
+    // Données pour afficher le graphique de volatilité
     const volatilityBarData = {
         labels: volatilityData.map(crypto => crypto.name),
         datasets: [{
@@ -57,11 +61,13 @@ export default function Performance2() {
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
             <h1>Volatilité des Cryptos</h1>
 
+            {/* Graphique affichant la volatilité */}
             <div style={{ marginTop: "30px" }}>
-                <h2>Volatilité </h2>
+                <h2>Volatilité</h2>
                 <Bar data={volatilityBarData} />
             </div>
 
+            {/* Tableau des détails de la volatilité */}
             <h2 style={{ marginTop: "30px" }}>Détail des Volatilités</h2>
             <table border="1" style={{ width: "100%", textAlign: "center", borderCollapse: "collapse", marginTop: "20px" }}>
                 <thead style={{ backgroundColor: "#f0f0f0" }}>
@@ -82,6 +88,7 @@ export default function Performance2() {
                 </tbody>
             </table>
 
+            {/* Explication de la formule utilisée pour la volatilité */}
             <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "#f8f9fa", borderRadius: "8px" }}>
                 <h3>Formule utilisée pour calculer la volatilité :</h3>
                 <p style={{ fontSize: "16px" }}>
@@ -101,6 +108,7 @@ export default function Performance2() {
                 </p>
             </div>
 
+            {/* Boutons de navigation */}
             <div style={{ textAlign: "center", marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
                 <button
                     onClick={() => navigate("/performance")}
@@ -135,6 +143,7 @@ export default function Performance2() {
         </div>
     );
 }
+
 
 
 

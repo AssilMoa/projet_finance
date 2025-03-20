@@ -14,10 +14,10 @@ export default function Register() {
         });
 
         if (response.ok) {
-            alert("✅ Inscription réussie !");
+            alert(" Inscription réussie !");
             navigate("/login");
         } else {
-            alert("❌ Email déjà utilisé");
+            alert("Email déjà utilisé");
         }
     };
 
