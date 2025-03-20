@@ -30,11 +30,11 @@ export default function Home({ user }) {
 
                 <div style={styles.buttonContainer}>
                     <button style={styles.button} onClick={() => navigate("/portfolio")}>
-                        Voir mon portefeuille
+                        Acheter un actif
                     </button>
 
                     <button style={styles.button} onClick={() => navigate("/history")}>
-                        Voir l'historique des actifs
+                        Voir l'historique des actifs / Supprimer un actif
                     </button>
 
                     <button style={styles.button} onClick={() => navigate("/performance")}>

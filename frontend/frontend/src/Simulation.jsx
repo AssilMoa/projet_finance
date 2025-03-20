@@ -124,7 +124,7 @@ export default function Simulation() {
 
                 {/* 🔹 Résultats */}
                 {profit !== 0 && <h2>Gains/Pertes simulés : {profit} $</h2>}
-                <h2>Prévision SMA 7j : {predictedSMA} $</h2>
+                <h2>Prévision moyenne mobile simple 7j : {predictedSMA} $</h2>
                 <h2>Prévision Régression Linéaire : {predictedRegression} $</h2>
 
                 {/* 🔹 Graphique */}
@@ -135,7 +135,7 @@ export default function Simulation() {
                 {/* 🔹 Explication des Formules */}
                 <div style={styles.formulaBox}>
                     <h3>Formules utilisées :</h3>
-                    <p><strong>Moyenne Mobile Simple (SMA) :</strong></p>
+                    <p><strong>Moyenne Mobile Simple :</strong></p>
                     <p style={styles.formula}>
                         SMA = (P₁ + P₂ + ... + Pₙ) / n
                     </p>

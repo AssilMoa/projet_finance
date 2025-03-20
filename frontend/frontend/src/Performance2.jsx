@@ -14,7 +14,7 @@ export default function Performance2() {
             try {
                 const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`);
                 if (!response.ok) {
-                    throw new Error("❌ Erreur lors de la récupération des données du marché.");
+                    throw new Error("Erreur lors de la récupération des données du marché.");
                 }
                 const data = await response.json();
 
@@ -31,8 +31,8 @@ export default function Performance2() {
 
                 setVolatilityData(volatility);
             } catch (error) {
-                console.error("❌ Erreur chargement du marché :", error);
-                setError("⚠️ Impossible de récupérer la volatilité.");
+                console.error("Erreur lors du chargement du marché :", error);
+                setError("Impossible de récupérer la volatilité.");
             } finally {
                 setLoading(false);
             }
@@ -41,10 +41,9 @@ export default function Performance2() {
         fetchMarketData();
     }, []);
 
-    if (loading) return <h2>Chargement de la volatilité... 🔄</h2>;
+    if (loading) return <h2>Chargement de la volatilité...</h2>;
     if (error) return <h2>{error}</h2>;
 
-    // 🔥 Données pour le Bar Chart (Volatilité des cryptos)
     const volatilityBarData = {
         labels: volatilityData.map(crypto => crypto.name),
         datasets: [{
@@ -56,16 +55,14 @@ export default function Performance2() {
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <h1>🌊 Volatilité des Cryptos</h1>
+            <h1>Volatilité des Cryptos</h1>
 
-            {/* 🔥 Graphique Volatilité */}
             <div style={{ marginTop: "30px" }}>
-                <h2>📊 Volatilité (24h)</h2>
+                <h2>Volatilité </h2>
                 <Bar data={volatilityBarData} />
             </div>
 
-            {/* 🔥 Tableau des Volatilités */}
-            <h2 style={{ marginTop: "30px" }}>📋 Détail des Volatilités</h2>
+            <h2 style={{ marginTop: "30px" }}>Détail des Volatilités</h2>
             <table border="1" style={{ width: "100%", textAlign: "center", borderCollapse: "collapse", marginTop: "20px" }}>
                 <thead style={{ backgroundColor: "#f0f0f0" }}>
                 <tr>
@@ -85,11 +82,10 @@ export default function Performance2() {
                 </tbody>
             </table>
 
-            {/* 🔥 Explication de la formule */}
             <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "#f8f9fa", borderRadius: "8px" }}>
-                <h3>📌 Formule utilisée pour calculer la volatilité :</h3>
+                <h3>Formule utilisée pour calculer la volatilité :</h3>
                 <p style={{ fontSize: "16px" }}>
-                    La volatilité est calculée en utilisant **l'écart-type** de la variation des prix sur les 24 dernières heures :
+                    La volatilité est calculée en utilisant l'écart-type de la variation des prix sur les 24 dernières heures :
                 </p>
                 <p style={{ fontSize: "18px", fontFamily: "monospace", backgroundColor: "#fff3cd", padding: "10px", borderRadius: "5px" }}>
                     σ = √(Σ (rᵢ - μ)² / N)
@@ -101,11 +97,10 @@ export default function Performance2() {
                     <li><strong>N</strong> = Nombre total d'actifs</li>
                 </ul>
                 <p style={{ fontSize: "16px" }}>
-                    Cela permet de mesurer l'écart des prix par rapport à leur moyenne sur **24 heures**. Plus la volatilité est élevée, plus le prix fluctue.
+                    Cela permet de mesurer l'écart des prix par rapport à leur moyenne sur 24 heures. Plus la volatilité est élevée, plus le prix fluctue.
                 </p>
             </div>
 
-            {/* 🔥 Boutons de navigation */}
             <div style={{ textAlign: "center", marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
                 <button
                     onClick={() => navigate("/performance")}
@@ -119,7 +114,7 @@ export default function Performance2() {
                         cursor: "pointer"
                     }}
                 >
-                    ⬅️ Retour
+                    Retour
                 </button>
 
                 <button
@@ -134,7 +129,7 @@ export default function Performance2() {
                         cursor: "pointer"
                     }}
                 >
-                    Suivant ➡️
+                    Suivant
                 </button>
             </div>
         </div>

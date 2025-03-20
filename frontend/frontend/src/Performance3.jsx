@@ -14,11 +14,10 @@ export default function Performance3() {
             try {
                 const response = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=5&page=1`);
                 if (!response.ok) {
-                    throw new Error("❌ Erreur lors de la récupération des données du marché.");
+                    throw new Error("Erreur lors de la récupération des données du marché.");
                 }
                 const data = await response.json();
 
-                // 🔥 Calcul du Sharpe Ratio
                 const riskFreeRate = 2; // Taux sans risque fictif en %
                 const priceChanges = data.map(crypto => crypto.price_change_percentage_24h);
                 const meanReturn = priceChanges.reduce((sum, value) => sum + value, 0) / priceChanges.length;
@@ -33,8 +32,8 @@ export default function Performance3() {
 
                 setSharpeData(sharpeRatios);
             } catch (error) {
-                console.error("❌ Erreur chargement du marché :", error);
-                setError("⚠️ Impossible de récupérer le Sharpe Ratio.");
+                console.error("Erreur lors du chargement du marché :", error);
+                setError("Impossible de récupérer le Sharpe Ratio.");
             } finally {
                 setLoading(false);
             }
@@ -43,10 +42,9 @@ export default function Performance3() {
         fetchMarketData();
     }, []);
 
-    if (loading) return <h2>Chargement du Sharpe Ratio... 🔄</h2>;
+    if (loading) return <h2>Chargement du Sharpe Ratio...</h2>;
     if (error) return <h2>{error}</h2>;
 
-    // 🔥 Données pour le Bar Chart (Sharpe Ratio)
     const sharpeBarData = {
         labels: sharpeData.map(crypto => crypto.name),
         datasets: [{
@@ -58,16 +56,14 @@ export default function Performance3() {
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-            <h1>📊 Sharpe Ratio des Cryptos</h1>
+            <h1>Sharpe Ratio des Cryptos</h1>
 
-            {/* 🔥 Graphique Sharpe Ratio */}
             <div style={{ marginTop: "30px" }}>
-                <h2>📈 Sharpe Ratio</h2>
+                <h2>Sharpe Ratio</h2>
                 <Bar data={sharpeBarData} />
             </div>
 
-            {/* 🔥 Tableau du Sharpe Ratio */}
-            <h2 style={{ marginTop: "30px" }}>📋 Détail du Sharpe Ratio</h2>
+            <h2 style={{ marginTop: "30px" }}>Détail du Sharpe Ratio</h2>
             <table border="1" style={{ width: "100%", textAlign: "center", borderCollapse: "collapse", marginTop: "20px" }}>
                 <thead style={{ backgroundColor: "#f0f0f0" }}>
                 <tr>
@@ -87,9 +83,8 @@ export default function Performance3() {
                 </tbody>
             </table>
 
-            {/* 🔥 Explication de la formule */}
             <div style={{ marginTop: "20px", padding: "15px", backgroundColor: "#f8f9fa", borderRadius: "8px" }}>
-                <h3>📌 Formule utilisée pour calculer le Sharpe Ratio :</h3>
+                <h3>Formule utilisée pour calculer le Sharpe Ratio :</h3>
                 <p style={{ fontSize: "16px" }}>
                     Le Sharpe Ratio mesure la performance ajustée au risque d’un actif :
                 </p>
@@ -103,12 +98,11 @@ export default function Performance3() {
                     <li><strong>σ</strong> = Volatilité de l'actif</li>
                 </ul>
                 <p style={{ fontSize: "16px" }}>
-                    Un **Sharpe Ratio élevé** signifie que l'actif offre un bon rendement par rapport au risque pris.
+                    Un Sharpe Ratio élevé signifie que l'actif offre un bon rendement par rapport au risque pris.
                     Un ratio négatif indique un rendement inférieur au taux sans risque.
                 </p>
             </div>
 
-            {/* 🔥 Boutons de navigation */}
             <div style={{ textAlign: "center", marginTop: "20px", display: "flex", justifyContent: "center", gap: "20px" }}>
                 <button
                     onClick={() => navigate("/performance2")}
@@ -122,7 +116,7 @@ export default function Performance3() {
                         cursor: "pointer"
                     }}
                 >
-                    ⬅️ Retour
+                    Retour
                 </button>
 
                 <button
@@ -137,7 +131,7 @@ export default function Performance3() {
                         cursor: "pointer"
                     }}
                 >
-                    🔄Suivant
+                    Suivant
                 </button>
             </div>
         </div>
